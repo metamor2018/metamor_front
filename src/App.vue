@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import 'ress'
+
 export default {
   name: 'App',
 };
