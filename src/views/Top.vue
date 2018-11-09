@@ -7,7 +7,7 @@
         </div>
         <div class="col-sm right-box">
           <div class="login-btn">
-            <p>なりきり</p>
+            <p>「なりきる」SNS</p>
             <button class="btn btn-info btn-lg" @click="handleLogin()">LOGIN</button>
           </div>
         </div>
@@ -60,15 +60,22 @@ export default {
     }
   }
 
-  .login-btn{
-    .btn{
-      width: 200px;
-      letter-spacing: 0;
-      transition: all 0.3s ease 0s;
+  .right-box{
+    .login-btn{
+      text-align: center;
+      p{
+        font-size: 2rem;
+      }
 
-      &:hover{
-        width: 250px;
-        letter-spacing: 5px;
+      .btn{
+        width: 200px;
+        letter-spacing: 0;
+        transition: all 0.3s ease 0s;
+
+        &:hover{
+          width: 250px;
+          letter-spacing: 5px;
+        }
       }
     }
   }
