@@ -3,11 +3,13 @@
     <div class="container-fulid">
       <div class="row">
         <div class="col-sm left-box">
-          <h1 class="title-logo">Metamor</h1>
+          <div class="title-box">
+            <p>「なりきる」<ruby><rb>世界</rb><rp>（</rp><rt>sns</rt><rp>）</rp></ruby></p>
+            <h1 class="title-logo">Metamor</h1>
+          </div>
         </div>
         <div class="col-sm right-box">
           <div class="login-btn">
-            <p>「なりきる」SNS</p>
             <button class="btn btn-info btn-lg" @click="handleLogin()">LOGIN</button>
           </div>
         </div>
@@ -41,7 +43,7 @@ export default {
   .container-fulid, .row, .col-sm{
     height: 100%;
   }
-  .title-logo, .login-btn{
+  .title-box, .login-btn{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -53,10 +55,17 @@ export default {
 
   .left-box{
     background: #ffc80780;
-    .title-logo{
-      font-family: 'Kumar One Outline', cursive;
-      text-align: right;
-      font-size: 5rem;
+    
+    .title-box{
+      text-align: center;
+      p{
+        font-size: 1.8rem;
+      }
+
+      .title-logo{
+        font-family: 'Kumar One Outline', cursive;
+        font-size: 5rem;
+      }
     }
   }
 
