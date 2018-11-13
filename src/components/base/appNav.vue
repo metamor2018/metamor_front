@@ -18,11 +18,8 @@
         </b-nav-form> -->
 
 
-        <b-nav-item-dropdown right>
-          <template slot="button-content">
-            <em>User</em>
-          </template>
-          <b-dropdown-item href="#">Profile</b-dropdown-item>
+        <b-nav-item-dropdown text="創作者" right>
+          <b-dropdown-item href="#">プロフィール</b-dropdown-item>
           <b-dropdown-item @click="handleLogout" style="color: red;">ログアウト</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
