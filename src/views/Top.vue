@@ -55,7 +55,6 @@ export default {
 
   .left-box{
     background: #ffc80780;
-    
     .title-box{
       text-align: center;
       p{
