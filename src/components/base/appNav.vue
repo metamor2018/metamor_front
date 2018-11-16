@@ -6,7 +6,7 @@
     <b-collapse is-nav id="nav_collapse">
 
       <b-navbar-nav>
-        <b-nav-item href="#">Test</b-nav-item>
+        <b-nav-item href="#">Metamor</b-nav-item>
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->
@@ -20,6 +20,10 @@
 
         <b-nav-item-dropdown text="創作者" right>
           <b-dropdown-item href="#">プロフィール</b-dropdown-item>
+          <b-dropdown-divider></b-dropdown-divider>
+          <b-dropdown-item href="#">ワールド</b-dropdown-item>
+          <b-dropdown-item href="#">キャラクター</b-dropdown-item>
+          <b-dropdown-divider></b-dropdown-divider>
           <b-dropdown-item @click="handleLogout" style="color: red;">ログアウト</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
@@ -40,7 +44,7 @@ export default {
     // logoutする
     handleLogout() {
       logout();
-    }
+    },
   },
-}
+};
 </script>
