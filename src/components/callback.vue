@@ -1,5 +1,4 @@
 <script>
-
 import { setIdToken, setAccessToken } from '../../utils/auth';
 
 export default {
@@ -8,7 +7,7 @@ export default {
     this.$nextTick(() => {
       setAccessToken();
       setIdToken();
-      window.location.href = '/';
+      this.$router.push({ name: 'create-profile', params: { id: 1 } });
     });
   },
 };

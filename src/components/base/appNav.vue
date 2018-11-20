@@ -36,6 +36,8 @@
 import { login, logout } from '../../../utils/auth';
 
 export default {
+  name: 'app-nav',
+
   methods: {
     // loginする
     handleLogin() {
@@ -44,6 +46,7 @@ export default {
     // logoutする
     handleLogout() {
       logout();
+      this.$router.push('/');
     },
   },
 };
