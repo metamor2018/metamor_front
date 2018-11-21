@@ -22,7 +22,7 @@
 import { isLoggedIn, login } from '../../utils/auth';
 
 export default {
-  name: 'top',
+  name: 'Top',
   methods: {
     handleLogin() {
       login();

@@ -10,11 +10,13 @@ Vue.use(Router);
 export default new Router({
   mode: 'history',
   routes: [
+    // Topページ
     {
       path: '/',
       name: 'top',
       component: Top,
     },
+    // ログインコールバック
     {
       path: '/callback',
       component: Callback,

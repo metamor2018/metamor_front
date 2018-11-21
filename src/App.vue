@@ -1,12 +1,25 @@
 <template>
   <div id="app">
+    <appNav v-if="isLoggedIn()"></appNav>
     <router-view/>
   </div>
 </template>
 
 <script>
+import { isLoggedIn } from '../utils/auth';
+import appNav from './components/base/appNav';
+
 export default {
   name: 'App',
+
+  components: { appNav },
+
+  methods: {
+    // loginしてるかどうかを確認する
+    isLoggedIn() {
+      return isLoggedIn();
+    },
+  },
 };
 </script>
 
