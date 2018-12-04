@@ -4,6 +4,7 @@ import Router from 'vue-router';
 import Top from '@/views/Top';
 import Creator from '@/views/Creator';
 import CreatorProfile from '@/views/creator/Profile';
+import CreatorWorld from '@/views/creator/World';
 // components
 import Callback from '@/components/callback';
 
@@ -30,9 +31,15 @@ export default new Router({
       children: [
         {
           // 創作者プロフィール
-          path: '',
+          path: 'profile',
           name: 'create-profile',
           component: CreatorProfile,
+        },
+        {
+          // ワールド管理
+          path: 'world',
+          name: 'create-world',
+          component: CreatorWorld,
         },
       ],
     },
