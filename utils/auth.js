@@ -1,18 +1,18 @@
 import decode from 'jwt-decode';
-import axios from 'axios';
 import Router from 'vue-router';
 import auth0 from 'auth0-js';
+
 const ID_TOKEN_KEY = 'id_token';
 const ACCESS_TOKEN_KEY = 'access_token';
 
-const CLIENT_ID = 'DtAda3Tu6yMNKkxdxQDnOefJiqb4llne';
-const CLIENT_DOMAIN = 'metamor.auth0.com';
+const CLIENT_ID = 'gURG2G5Z02fx8Dx1sfkZLc9fgyJSwsf9';
+const CLIENT_DOMAIN = 'om-metamor.auth0.com';
 const REDIRECT = 'http://localhost:8080/callback';
-const SCOPE = 'full_access';
-const AUDIENCE = 'http://metamor.com';
+const SCOPE = 'openid';
+const AUDIENCE = 'https://metamor.api.com';
 
 
-var auth = new auth0.WebAuth({
+const auth = new auth0.WebAuth({
   clientID: CLIENT_ID,
   domain: CLIENT_DOMAIN,
 });
@@ -26,7 +26,7 @@ export function login() {
   });
 }
 
-var router = new Router({
+const router = new Router({
   mode: 'history',
 });
 
@@ -40,7 +40,7 @@ export function requireAuth(to, from, next) {
   if (!isLoggedIn()) {
     next({
       path: '/',
-      query: { redirect: to.fullPath }
+      query: { redirect: to.fullPath },
     });
   } else {
     next();
