@@ -19,9 +19,9 @@
 
 
         <b-nav-item-dropdown text="創作者" right>
-          <b-dropdown-item href="#">プロフィール</b-dropdown-item>
+          <b-dropdown-item :to="{ name: 'create-profile', params: { Id: 2 }}">プロフィール</b-dropdown-item>
           <b-dropdown-divider></b-dropdown-divider>
-          <b-dropdown-item href="#">ワールド</b-dropdown-item>
+          <b-dropdown-item :to="{ name: 'create-world', params: { Id: 2 }}">ワールド</b-dropdown-item>
           <b-dropdown-item href="#">キャラクター</b-dropdown-item>
           <b-dropdown-divider></b-dropdown-divider>
           <b-dropdown-item @click="handleLogout" style="color: red;">ログアウト</b-dropdown-item>
@@ -36,6 +36,8 @@
 import { login, logout } from '../../../utils/auth';
 
 export default {
+  name: 'app-nav',
+
   methods: {
     // loginする
     handleLogin() {
@@ -44,6 +46,7 @@ export default {
     // logoutする
     handleLogout() {
       logout();
+      this.$router.push('/');
     },
   },
 };
