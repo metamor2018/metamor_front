@@ -4,6 +4,7 @@ import Vue from 'vue';
 import BootstrapVue from 'bootstrap-vue';
 // eslint-disable-next-line import/extensions
 import 'ress';
+import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import App from './App';
@@ -13,6 +14,8 @@ import router from './router';
 Vue.use(BootstrapVue);
 
 Vue.config.productionTip = false;
+
+Vue.prototype.$axios = axios;
 
 /* eslint-disable no-new */
 new Vue({

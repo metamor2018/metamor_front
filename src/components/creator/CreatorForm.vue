@@ -72,7 +72,14 @@ export default {
   methods: {
     onSubmit (evt) {
       evt.preventDefault();
-      alert(JSON.stringify(this.form));
+      this.$axios.post('http://localhost:3000/creator', this.form)
+        .then((response) => {
+          alert(JSON.stringify(this.form));
+          this.$router.push({ name: 'create-profile', params: { id: this.form.display_id } });
+        })
+        .catch((reason) => {
+          alert("送信できませんでした");
+        });
     },
   }
 }
