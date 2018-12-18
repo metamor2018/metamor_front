@@ -28,61 +28,61 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       form: {
         display_id: '',
         name: '',
       },
-    }
+    };
   },
   computed: {
     // バリデーションチェック
     // 創作者ID
-    displayIdState () {
-      return this.form.display_id.length >= 4 ? true : false
+    displayIdState() {
+      return this.form.display_id.length >= 4;
     },
-    invalidDisplayID () {
+    invalidDisplayID() {
       if (this.form.display_id.length > 4) {
-        return ''
+        return '';
       } else if (this.form.display_id.length > 0) {
-        return '４文字以上で入力してください'
-      } else {
-        return 'IDを入力してください'
+        return '４文字以上で入力してください';
       }
+
+      return 'IDを入力してください';
     },
-    validDisplayID () {
-      return this.state === true ? 'このIDは使用できます' : ''
+    validDisplayID() {
+      return this.state === true ? 'このIDは使用できます' : '';
     },
     // 創作者名
-    nameState () {
-      return this.form.name.length >= 1 ? true : false
+    nameState() {
+      return this.form.name.length >= 1;
     },
-    invalidName () {
+    invalidName() {
       if (this.form.name.length > 1) {
-        return ''
-      } else {
-        return '名前を入力してください'
+        return '';
       }
+
+      return '名前を入力してください';
     },
-    validName () {
-      return this.state === true ? 'ok' : ''
-    }
+    validName() {
+      return this.state === true ? 'ok' : '';
+    },
   },
   methods: {
-    onSubmit (evt) {
+    onSubmit(evt) {
       evt.preventDefault();
       this.$axios.post('http://localhost:3000/creator', this.form)
-        .then((response) => {
+        .then(() => {
           alert(JSON.stringify(this.form));
           this.$router.push({ name: 'create-profile', params: { id: this.form.display_id } });
         })
-        .catch((reason) => {
-          alert("送信できませんでした");
+        .catch(() => {
+          alert('送信できませんでした');
         });
     },
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>
