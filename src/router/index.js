@@ -7,6 +7,7 @@ import CreatorProfile from '@/views/creator/Profile';
 import CreatorWorld from '@/views/creator/World';
 // components
 import Callback from '@/components/callback';
+import CheckSignUp from '@/components/checkSignup';
 
 Vue.use(Router);
 
@@ -42,6 +43,11 @@ export default new Router({
           component: CreatorWorld,
         },
       ],
+    },
+    // 創作者が作成されているか確認
+    {
+      path: '/check/signup',
+      component: CheckSignUp,
     },
   ],
 });

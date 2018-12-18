@@ -7,7 +7,7 @@ export default {
     this.$nextTick(() => {
       setAccessToken();
       setIdToken();
-      this.$router.push({ name: 'create-profile', params: { id: 1 } });
+      window.location.href = '/check/signup';
     });
   },
 };
