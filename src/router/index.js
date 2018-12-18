@@ -4,6 +4,7 @@ import Router from 'vue-router';
 import Top from '@/views/Top';
 // components
 import Callback from '@/components/callback';
+import CheckSignUp from '@/components/checkSignup';
 
 Vue.use(Router);
 
@@ -20,6 +21,11 @@ export default new Router({
     {
       path: '/callback',
       component: Callback,
+    },
+    // 創作者が作成されているか確認
+    {
+      path: '/check/signup',
+      component: CheckSignUp,
     },
   ],
 });
