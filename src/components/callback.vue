@@ -1,4 +1,5 @@
 <script>
+
 import { setIdToken, setAccessToken } from '../../utils/auth';
 
 export default {
@@ -7,7 +8,7 @@ export default {
     this.$nextTick(() => {
       setAccessToken();
       setIdToken();
-      this.$router.push({ name: 'create-profile', params: { id: 1 } });
+      this.$router.push({ name: 'checkSignUp' });
     });
   },
 };

@@ -6,7 +6,7 @@
     <b-collapse is-nav id="nav_collapse">
 
       <b-navbar-nav>
-        <b-nav-item href="#">Metamor</b-nav-item>
+        <b-nav-item href="/">Metamor</b-nav-item>
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->
