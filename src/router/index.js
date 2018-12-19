@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 // views
 import Top from '@/views/Top';
-import CreatorRegi from '@/views/creator/CreatorRegi';
+import Signup from '@/views/Signup';
 import Creator from '@/views/Creator';
 import CreatorProfile from '@/views/creator/Profile';
 import CreatorWorld from '@/views/creator/World';
@@ -34,9 +34,9 @@ export default new Router({
     },
     // 創作者新規作成
     {
-      path: '/creator-register',
-      name: 'creator-regi',
-      component: CreatorRegi,
+      path: '/signup',
+      name: 'signup',
+      component: Signup,
     },
     // 創作者
     {
