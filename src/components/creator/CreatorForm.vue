@@ -3,13 +3,13 @@
     <b-form @submit="onSubmit">
       <b-form-group horizontal
                     :label-cols="2"
-                    id="display_id_group"
+                    id="id_group"
                     label="創作者ID"
-                    label-for="display_id"
+                    label-for="id"
                     :invalid-feedback="invalidDisplayID"
                     :valid-feedback="validDisplayID"
-                    :state="displayIdState">
-        <b-form-input id="display_id" :state="displayIdState" v-model.trim="form.display_id"></b-form-input>
+                    :state="idState">
+        <b-form-input id="id" :state="idState" v-model.trim="form.id"></b-form-input>
       </b-form-group>
       <b-form-group horizontal
                     :label-cols="2"
@@ -27,11 +27,13 @@
 </template>
 
 <script>
+import create from '../../../utils/apis/creator';
+
 export default {
   data() {
     return {
       form: {
-        display_id: '',
+        id: '',
         name: '',
       },
     };
@@ -39,13 +41,13 @@ export default {
   computed: {
     // バリデーションチェック
     // 創作者ID
-    displayIdState() {
-      return this.form.display_id.length >= 4;
+    idState() {
+      return this.form.id.length >= 4;
     },
     invalidDisplayID() {
-      if (this.form.display_id.length > 4) {
+      if (this.form.id.length > 4) {
         return '';
-      } else if (this.form.display_id.length > 0) {
+      } else if (this.form.id.length > 0) {
         return '４文字以上で入力してください';
       }
 
@@ -72,13 +74,19 @@ export default {
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
-      this.$axios.post('http://localhost:3000/creator', this.form)
-        .then(() => {
-          alert(JSON.stringify(this.form));
-          this.$router.push({ name: 'create-profile', params: { id: this.form.display_id } });
+      create(this.form)
+        .then((data) => {
+          this.$router.push({ name: 'create-profile', params: { id: data.data.creatorId } });
         })
-        .catch(() => {
-          alert('送信できませんでした');
+        .catch((e) => {
+          const statusCode = e.response.status;
+          if (statusCode === 400) {
+            alert(e.response.data.join('\n'));
+          } else if (statusCode === 303) {
+            this.$router.push({ name: 'top' });
+          } else {
+            alert('問題が発生しました。もう一度お試しください');
+          }
         });
     },
   },
