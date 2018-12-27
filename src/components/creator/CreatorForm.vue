@@ -75,16 +75,16 @@ export default {
     onSubmit(evt) {
       evt.preventDefault();
       create(this.form)
-        .then((data) => {
+        .then((data) => { // 創作者作成成功時、プロフィールページに移動
           this.$router.push({ name: 'create-profile', params: { id: data.data.creatorId } });
         })
         .catch((e) => {
           const statusCode = e.response.status;
-          if (statusCode === 400) {
+          if (statusCode === 400) { // バリデーションエラー
             alert(e.response.data.join('\n'));
-          } else if (statusCode === 303) {
+          } else if (statusCode === 303) { // 既に創作者を作成していた場合
             this.$router.push({ name: 'top' });
-          } else {
+          } else { // バックエンドで何か問題が発生した場合
             alert('問題が発生しました。もう一度お試しください');
           }
         });
