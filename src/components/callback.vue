@@ -8,7 +8,7 @@ export default {
     this.$nextTick(() => {
       setAccessToken();
       setIdToken();
-      window.location.href = '/check/signup';
+      this.$router.push({ name: 'checkSignUp' });
     });
   },
 };
