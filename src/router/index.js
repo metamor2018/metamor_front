@@ -6,6 +6,7 @@ import Signup from '@/views/Signup';
 import Creator from '@/views/Creator';
 import CreatorProfile from '@/views/creator/Profile';
 import CreatorWorld from '@/views/creator/World';
+import Worlds from '@/views/world/Worlds';
 // components
 import Callback from '@/components/callback';
 import CheckSignUp from '@/components/checkSignup';
@@ -56,6 +57,11 @@ export default new Router({
           component: CreatorWorld,
         },
       ],
+    },
+    {
+      path: '/world',
+      name: 'worlds',
+      component: Worlds,
     },
   ],
 });
