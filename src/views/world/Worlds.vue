@@ -6,7 +6,7 @@
           <div class="media-body">
             <h5 class="mt-0">{{ world.name }}</h5>
             {{ world.detail }}
-            <button type="button" class="btn btn-secondary">詳細</button>
+            <router-link v-bind:to="{ name : 'world-detail', params : { id: world.id }}" class="btn btn-secondary">詳細</router-link>
           </div>
         </div>
       </li>
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import getWorlds from '../../../utils/apis/world';
+import { getWorlds } from '../../../utils/apis/world';
 
 export default {
   data() {
