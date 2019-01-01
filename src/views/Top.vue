@@ -2,13 +2,13 @@
   <div id="top">
     <div class="container-fulid">
       <div class="row">
-        <div class="col-sm left-box">
+        <div class="col-md left-box">
           <div class="title-box">
             <p>「なりきる」<ruby><rb>世界</rb><rp>（</rp><rt>sns</rt><rp>）</rp></ruby></p>
             <h1 class="title-logo">Metamor</h1>
           </div>
         </div>
-        <div class="col-sm right-box">
+        <div class="col-md right-box">
           <div class="login-btn">
             <button class="btn btn-info btn-lg" @click="handleLogin()">LOGIN</button>
           </div>
