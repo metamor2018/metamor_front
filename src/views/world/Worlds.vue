@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import getWorlds from '../../../utils/apis/world';
+import { getWorld } from '../../../utils/apis/world';
 
 export default {
   data() {
@@ -24,7 +24,7 @@ export default {
     };
   },
   mounted() {
-    getWorlds()
+    getWorld()
       .then((data) => {
         this.worlds = data.data;
       })

@@ -18,24 +18,8 @@
 </template>
 
 <script>
-import { findCreator } from '../../../utils/apis/creator';
-
 export default {
-  data() {
-    return {
-      creator: '',
-    };
-  },
-  mounted() {
-    this.$nextTick(() => {
-      findCreator(this.$route.params.id)
-        .then((data) => {
-          this.creator = data.data;
-        }).catch(() => {
-          this.$router.push({ path: '/error' });
-        });
-    });
-  },
+  props: ['creator'],
 };
 
 </script>
