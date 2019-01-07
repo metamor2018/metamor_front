@@ -6,7 +6,10 @@ import Signup from '@/views/Signup';
 import Creator from '@/views/Creator';
 import CreatorProfile from '@/views/creator/Profile';
 import CreatorWorld from '@/views/creator/World';
+import World from '@/views/World';
 import Worlds from '@/views/world/Worlds';
+import WorldDetail from '@/views/world/Detail';
+
 // components
 import Callback from '@/components/callback';
 import CheckSignUp from '@/components/checkSignup';
@@ -60,8 +63,22 @@ export default new Router({
     },
     {
       path: '/world',
-      name: 'worlds',
-      component: Worlds,
+      name: 'world',
+      component: World,
+      children: [
+        {
+          // 一覧ページ
+          path: '',
+          name: 'worlds',
+          component: Worlds,
+        },
+        {
+          // 詳細ページ
+          path: ':id',
+          name: 'world-detail',
+          component: WorldDetail,
+        },
+      ],
     },
   ],
 });

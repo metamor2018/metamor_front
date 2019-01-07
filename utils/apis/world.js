@@ -8,3 +8,7 @@ export function getWorld() {
 export function getWorldByCreatorId(creatorId) {
   return axios.get(`/creator/${creatorId}/world`);
 }
+
+export function findWorld(worldId) {
+  return axios.get(`/world/${worldId}`);
+}
