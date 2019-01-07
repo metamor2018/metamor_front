@@ -7,7 +7,7 @@
       </div>
       <div class="body">
         <ul>
-          <li v-for="world in worlds" class="world_area" :key="world.id">
+          <li class="world_area" v-for="world in worlds" :key="world.id">
             <div class="left">
               <div class="name_area">
                 <label>ワールド名</label>

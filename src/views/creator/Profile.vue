@@ -1,10 +1,10 @@
 <template>
 <div id="profile" class="row">
-  <creator-profile :creator="creator" class="col-sm-4 col-lg-3"></creator-profile>
+  <creator-profile class="col-sm-4 col-lg-3" :creator="creator"></creator-profile>
   <div class="col-sm-8 col-lg-9">
     <div class="row">
-      <world-list :worlds="worlds" class="col-lg-7  col-xl-8"></world-list>
-      <character-list class="col-lg-5 col-xl-4"></character-list>
+      <world-list class="col-lg-7  col-xl-8" :worlds="worlds"></world-list>
+      <character-list class="col-lg-5 col-xl-4" :characters="characters"></character-list>
     </div>
   </div>
 </div>
@@ -15,6 +15,7 @@ import worldList from '@/components/creator/worldList';
 import characterList from '@/components/creator/characterList';
 import { findCreator } from '../../../utils/apis/creator';
 import { getWorldByCreatorId } from '../../../utils/apis/world';
+import { getCharacterByCreatorId } from '../../../utils/apis/character';
 
 export default {
   components: { creatorProfile, worldList, characterList },
@@ -22,6 +23,7 @@ export default {
     return {
       creator: '',
       worlds: '',
+      characters: '',
     };
   },
   mounted() {
@@ -30,9 +32,11 @@ export default {
       Promise.all([
         findCreator(creatorId),
         getWorldByCreatorId(creatorId),
-      ]).then(([creator, worlds]) => {
+        getCharacterByCreatorId(creatorId),
+      ]).then(([creator, worlds, characters]) => {
         this.creator = creator.data;
         this.worlds = worlds.data;
+        this.characters = characters.data;
       }).catch((e) => {
         console.log(e);
         this.$router.push({ path: '/error' });

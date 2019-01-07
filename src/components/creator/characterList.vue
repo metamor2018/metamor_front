@@ -7,13 +7,13 @@
       </div>
       <div class="body">
         <ul>
-          <li class="character_area">
+          <li class="character_area" v-for="character in characters" :key="character.id">
             <div class="icon_area">
               <img src="https://itc.moe/assets/images/avatar_b6232.png" alt="character_icon">
             </div>
             <div class="name_area">
-              <p class="chara_name">Hack-Man</p>
-              <p class="chara_id">@mogus_workshop</p>
+              <p class="chara_name">{{ character.name }}</p>
+              <p class="chara_id">@{{ character.id }}</p>
             </div>
             <div class="arrow"></div>
           </li>
@@ -22,6 +22,12 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: ['characters'],
+};
+</script>
 
 <style lang="scss" scoped>
 #character-list{
