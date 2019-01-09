@@ -5,17 +5,24 @@
         <img src="https://itc.moe/assets/images/avatar_b6232.png" alt="icon">
       </div>
       <div class="name">
-        <p class="creator_name">Hack-Man</p>
-        <p class="creator_id">@mogus_workshop</p>
+        <p class="creator_name">{{ creator.name }}</p>
+        <p class="creator_id">@{{ creator.id }}</p>
       </div>
       <div class="profile">
         <p>
-          test test test test test test test test test test test test test test
+          {{ creator.profile }}
         </p>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: ['creator'],
+};
+
+</script>
 
 <style lang="scss" scoped>
 #creator-profile{

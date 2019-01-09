@@ -7,18 +7,20 @@
       </div>
       <div class="body">
         <ul>
-          <li class="world_area">
+          <li class="world_area" v-for="world in worlds" :key="world.id">
             <div class="left">
               <div class="name_area">
                 <label>ワールド名</label>
-                <p class="name">OIC-World</p>
+                <p class="name">{{ world.name }}</p>
               </div>
               <div class="time_area">
                 <label>開催期間</label>
-                <p class="for_time">01/01 ~ 01/31</p>
+                <p class="for_time" v-if="world.endedAt !== null || world.startedAt !== null">
+                  {{ world.startedAt }} ~ {{ world.endedAt }}
+                </p>
               </div>
               <div class="detail_area">
-                <p>texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext</p>
+                <p>{{ world.detail }}</p>
               </div>
             </div>
             <div class="right">
@@ -35,6 +37,12 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: ['worlds'],
+};
+</script>
 
 <style lang="scss" scoped>
 #world-list{

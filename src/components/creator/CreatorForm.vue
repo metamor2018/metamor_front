@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import create from '../../../utils/apis/creator';
+import { create } from '../../../utils/apis/creator';
 
 export default {
   data() {
