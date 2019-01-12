@@ -5,18 +5,22 @@
         <div class="media">
           <div class="media-body">
             {{ status.character.name }}
+            {{ status.createdAt }}
             <h5 class="mt-0">{{ status.text }}</h5>
           </div>
         </div>
       </li>
     </ul>
+    <status-form :statuses="statuses"></status-form>
   </div>
 </template>
 
 <script>
+import StatusForm from '@/components/status/statusForm';
 import { getStatusByWorldId } from '../../../utils/apis/status';
 
 export default {
+  components: { StatusForm },
   data() {
     return {
       statuses: [],
