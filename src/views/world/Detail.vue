@@ -1,8 +1,13 @@
 <template>
   <div>
-    <h1>{{ world.name }}</h1>
-    <a>{{ world.detail }}</a>
-    <button type="button" class="btn btn-primary">Primary</button>
+    <div>
+      <h1>{{ world.name }}</h1>
+      <a>{{ world.detail }}</a>
+    </div>
+    <div>
+      <router-link v-bind:to="{ name : 'character-select', params : { id: world.id }}" class="btn btn-primary">既存のキャラクターで参加</router-link>
+      <button type="button" class="btn btn-primary">新しいキャラクターで参加</button>
+    </div>
   </div>
 </template>
 

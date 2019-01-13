@@ -37,8 +37,7 @@ export default {
         this.creator = creator.data;
         this.worlds = worlds.data;
         this.characters = characters.data;
-      }).catch((e) => {
-        console.log(e);
+      }).catch(() => {
         this.$router.push({ path: '/error' });
       });
     });

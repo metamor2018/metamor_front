@@ -17,3 +17,11 @@ export function create(form) {
 export function findCreator(creatorId) {
   return axios.get(`/creator/${creatorId}`);
 }
+
+/**
+ * ログインしている創作者の取得
+ * @returns {AxiosPromise<any>}
+ */
+export function findLoginCreator() {
+  return axios.get('/login/creator');
+}
