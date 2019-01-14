@@ -19,9 +19,9 @@
 
 
         <b-nav-item-dropdown text="創作者" right>
-          <b-dropdown-item :to="{ name: 'create-profile', params: { id: 1 }}">プロフィール</b-dropdown-item>
+          <b-dropdown-item :to="{ name: 'create-profile', params: { id: creator.id }}">プロフィール</b-dropdown-item>
           <b-dropdown-divider></b-dropdown-divider>
-          <b-dropdown-item :to="{ name: 'create-world', params: { id: 1 }}">ワールド</b-dropdown-item>
+          <b-dropdown-item :to="{ name: 'create-world', params: { id: creator.id }}">ワールド</b-dropdown-item>
           <b-dropdown-item href="#">キャラクター</b-dropdown-item>
           <b-dropdown-divider></b-dropdown-divider>
           <b-dropdown-item @click="handleLogout" style="color: red;">ログアウト</b-dropdown-item>
@@ -33,11 +33,20 @@
 </template>
 
 <script>
-import { login, logout } from '../../../utils/auth';
+import { login, logout, getCreator } from '../../../utils/auth';
 
 export default {
   name: 'app-nav',
-
+  data() {
+    return {
+      creator: '',
+    };
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.creator = getCreator();
+    });
+  },
   methods: {
     // loginする
     handleLogin() {
