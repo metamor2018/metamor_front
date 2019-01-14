@@ -10,7 +10,9 @@ import World from '@/views/World';
 import Worlds from '@/views/world/Worlds';
 import WorldDetail from '@/views/world/Detail';
 import WorldTimeline from '@/views/world/Timeline';
+import Character from '@/views/Character';
 import CharacterSelect from '@/views/world/CharacterSelect';
+import CharacterCreate from '@/views/character/Create';
 // components
 import Callback from '@/components/callback';
 
@@ -56,9 +58,21 @@ export default new Router({
       ],
     },
     {
-      path: '/character/:characterId/world/:worldId',
-      name: 'world-timeline',
-      component: WorldTimeline,
+      path: '/character',
+      name: 'character',
+      component: Character,
+      children: [
+        {
+          path: 'create',
+          name: 'character-create',
+          component: CharacterCreate,
+        },
+        {
+          path: ':characterId/world/:worldId',
+          name: 'world-timeline',
+          component: WorldTimeline,
+        },
+      ],
     },
     {
       path: '/world',

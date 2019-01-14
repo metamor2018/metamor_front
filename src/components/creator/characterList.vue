@@ -7,6 +7,12 @@
       </div>
       <div class="body">
         <ul>
+          <router-link tag="li" class="character_area" :to="{ name: 'character-create'}">
+            <div class="name_area">
+              <p class="chara_name">作成する</p>
+            </div>
+            <div class="arrow"></div>
+          </router-link>
           <li class="character_area" v-for="character in characters" :key="character.id">
             <div class="icon_area">
               <img src="https://itc.moe/assets/images/avatar_b6232.png" alt="character_icon">
