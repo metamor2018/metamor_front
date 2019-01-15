@@ -24,6 +24,7 @@ export default {
       creator: '',
       worlds: '',
       characters: '',
+      characterLine: 1, // キャラクターのページ
     };
   },
   mounted() {
@@ -32,11 +33,12 @@ export default {
       Promise.all([
         findCreator(creatorId),
         getWorldByCreatorId(creatorId),
-        getCharacterByCreatorId(creatorId),
+        getCharacterByCreatorId(creatorId, this.characterLine),
       ]).then(([creator, worlds, characters]) => {
         this.creator = creator.data;
         this.worlds = worlds.data;
         this.characters = characters.data;
+        this.characterLine += 1;
       }).catch(() => {
         this.$router.push({ path: '/error' });
       });
