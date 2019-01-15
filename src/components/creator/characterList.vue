@@ -7,7 +7,13 @@
       </div>
       <div class="body">
         <ul>
-          <li class="character_area" v-for="character in characters" :key="character.id">
+          <router-link tag="li" class="character_area" :to="{ name: 'character-create'}">
+            <div class="name_area">
+              <p class="chara_name">作成する</p>
+            </div>
+            <div class="arrow"></div>
+          </router-link>
+          <router-link tag="li" class="character_area" v-for="character in characters" :key="character.id" :to="{ name: 'character-detail', params : { characterId: character.id }}">
             <div class="icon_area">
               <img src="https://itc.moe/assets/images/avatar_b6232.png" alt="character_icon">
             </div>
@@ -16,7 +22,7 @@
               <p class="chara_id">@{{ character.id }}</p>
             </div>
             <div class="arrow"></div>
-          </li>
+          </router-link>
         </ul>
       </div>
     </div>
