@@ -15,3 +15,7 @@ export function createCharacter(form) {
   form.creatorId = creator.id;
   return axios.post('/character', form);
 }
+
+export function findCharacter(characterId) {
+  return axios.get(`/character/${characterId}`);
+}
