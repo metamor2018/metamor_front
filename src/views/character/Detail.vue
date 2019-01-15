@@ -23,7 +23,12 @@ export default {
         this.character = data.data;
       })
       .catch((e) => {
-        alert(e);
+        const statusCode = e.response.status;
+        if (statusCode === 404) { // 存在しないキャラクターページに来たとき
+          // TODO エラーページに飛ばしたい
+        } else { // バックエンドで何か問題が発生した場合
+          alert('問題が発生しました。もう一度お試しください');
+        }
       });
   },
 };
