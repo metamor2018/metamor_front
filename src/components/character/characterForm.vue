@@ -74,8 +74,8 @@ export default {
     onSubmit(evt) {
       evt.preventDefault();
       createCharacter(this.form)
-        .then((data) => { // キャラクターのプロフィールページに移動したい
-          this.$router.push({ name: 'top' });
+        .then(() => { // キャラクターのプロフィールページに移動
+          this.$router.push({ name: 'character-detail', params: { characterId: this.form.id } });
         })
         .catch((e) => {
           const statusCode = e.response.status;
