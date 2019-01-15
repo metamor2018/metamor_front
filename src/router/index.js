@@ -10,9 +10,9 @@ import World from '@/views/World';
 import Worlds from '@/views/world/Worlds';
 import WorldDetail from '@/views/world/Detail';
 import WorldTimeline from '@/views/world/Timeline';
+import CharacterSelect from '@/views/world/CharacterSelect';
 // components
 import Callback from '@/components/callback';
-import CheckSignUp from '@/components/checkSignup';
 
 Vue.use(Router);
 
@@ -29,12 +29,6 @@ export default new Router({
     {
       path: '/callback',
       component: Callback,
-    },
-    // 創作者が作成されているか確認
-    {
-      path: '/check/signup',
-      name: 'checkSignUp',
-      component: CheckSignUp,
     },
     // 創作者新規作成
     {
@@ -83,7 +77,11 @@ export default new Router({
           name: 'world-detail',
           component: WorldDetail,
         },
-
+        {
+          path: ':id/entry',
+          name: 'character-select',
+          component: CharacterSelect,
+        },
       ],
     },
   ],

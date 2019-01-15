@@ -5,6 +5,6 @@ import axios from './axiosBase';
  * @param creatorId
  * @returns {AxiosPromise<any>}
  */
-export function getCharacterByCreatorId(creatorId) {
-  return axios.get(`/creator/${creatorId}/character`);
+export function getCharacterByCreatorId(creatorId, line) {
+  return axios.get(`/creator/${creatorId}/character/${line}`);
 }

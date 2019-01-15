@@ -12,3 +12,10 @@ export function getWorldByCreatorId(creatorId) {
 export function findWorld(worldId) {
   return axios.get(`/world/${worldId}`);
 }
+
+export function entryWorld(characterId, worldId) {
+  return axios.post('/world/entry', {
+    characterId,
+    worldId,
+  });
+}

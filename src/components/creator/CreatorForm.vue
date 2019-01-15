@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import { setCreator } from '../../../utils/auth';
 import { create } from '../../../utils/apis/creator';
 
 export default {
@@ -76,6 +77,7 @@ export default {
       evt.preventDefault();
       create(this.form)
         .then((data) => { // 創作者作成成功時、プロフィールページに移動
+          setCreator();
           this.$router.push({ name: 'create-profile', params: { id: data.data.creatorId } });
         })
         .catch((e) => {

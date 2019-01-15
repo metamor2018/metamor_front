@@ -1,6 +1,7 @@
 import decode from 'jwt-decode';
 import Router from 'vue-router';
 import auth0 from 'auth0-js';
+import { findLoginCreator } from './apis/creator';
 
 const ID_TOKEN_KEY = 'id_token';
 const ACCESS_TOKEN_KEY = 'access_token';
@@ -33,6 +34,7 @@ const router = new Router({
 export function logout() {
   clearIdToken();
   clearAccessToken();
+  clearCreator();
   router.go('/');
 }
 
@@ -52,7 +54,11 @@ export function getIdToken() {
 }
 
 export function getAccessToken() {
-  return localStorage.getItem(ACCESS_TOKEN_KEY);
+  return localStorage.getItem('access_token');
+}
+
+export function getCreator() {
+  return JSON.parse(localStorage.getItem('creator'));
 }
 
 function clearIdToken() {
@@ -61,6 +67,10 @@ function clearIdToken() {
 
 function clearAccessToken() {
   localStorage.removeItem(ACCESS_TOKEN_KEY);
+}
+
+function clearCreator() {
+  localStorage.removeItem('creator');
 }
 
 // Helper function that will allow us to extract the access_token and id_token
@@ -79,6 +89,17 @@ export function setAccessToken() {
 export function setIdToken() {
   let idToken = getParameterByName('id_token');
   localStorage.setItem(ID_TOKEN_KEY, idToken);
+}
+
+// ログインしている創作者をlocal storageにセット
+export function setCreator() {
+  findLoginCreator()
+    .then((data) => {
+      localStorage.setItem('creator', JSON.stringify(data.data));
+    })
+    .catch(() => {
+      this.$router.push({ path: '/error' });
+    });
 }
 
 // トークンを取得して、ログインしているかどうかを返す
