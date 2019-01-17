@@ -18,8 +18,5 @@ export function findWorld(worldId) {
 }
 
 export function entryWorld(characterId, worldId) {
-  return axios.post('/world/entry', {
-    characterId,
-    worldId,
-  });
+  return axios.post(`/world/${worldId}/entry/${characterId}`);
 }
