@@ -36,7 +36,7 @@ export default {
       postStatus(characterId, worldId, this.form)
         .then((data) => {
           this.$emit('input', { // 作成した投稿を親コンポーネントのstatusesに追加する
-            statuses: this.statuses.push(data.data),
+            statuses: this.statuses.unshift(data.data),
           });
         })
         .catch(() => {

@@ -11,8 +11,8 @@
 </template>
 <script>
 import creatorProfile from '@/components/creator/creatorProfile';
-import worldList from '@/components/creator/worldList';
-import characterList from '@/components/creator/characterList';
+import worldList from '@/components/world/worldList';
+import characterList from '@/components/character/characterList';
 import { findCreator } from '../../../utils/apis/creator';
 import { getWorldByCreatorId } from '../../../utils/apis/world';
 import { getCharacterByCreatorId } from '../../../utils/apis/character';

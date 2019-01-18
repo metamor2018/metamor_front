@@ -3,10 +3,11 @@ import axios from './axiosBase';
 /**
  * 投稿を取得
  * @param worldId
+ * @param line
  * @returns {AxiosPromise<any>}
  */
-export function getStatusByWorldId(worldId) {
-  return axios.get(`/world/${worldId}/status`);
+export function getStatusByWorldId(worldId, line) {
+  return axios.get(`/world/${worldId}/status/${line}`);
 }
 
 

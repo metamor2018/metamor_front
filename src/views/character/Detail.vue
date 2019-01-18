@@ -1,21 +1,22 @@
 <template>
-  <div>
-    <div>
-      <h6 class="mt-0">@{{ character.id }}</h6>
-      <h5 class="mt-0">{{ character.name }}</h5>
-      {{ character.profile }}
+  <div id="profile" class="row">
+    <character-profile class="col-sm-4 col-lg-3" :character="character"></character-profile>
+    <div class="col-sm-8 col-lg-9">
+      <div class="row">
+        <world-list class="col-lg-7  col-xl-8" :worlds="worlds"></world-list>
+      </div>
     </div>
-    <world-list class="col-lg-7  col-xl-8" :worlds="worlds"></world-list>
   </div>
 </template>
 
 <script>
-import worldList from '@/components/creator/worldList';
+import characterProfile from '@/components/character/characterProfile';
+import worldList from '@/components/world/worldList';
 import { findCharacter } from '../../../utils/apis/character';
 import { getWorldByCharacterId } from '../../../utils/apis/world';
 
 export default {
-  components: { worldList },
+  components: { characterProfile, worldList },
   data() {
     return {
       character: '',
@@ -42,3 +43,14 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+#profile{
+  #creator-profile{
+  }
+  #world-list{
+  }
+  #character-list{
+  }
+}
+</style>
