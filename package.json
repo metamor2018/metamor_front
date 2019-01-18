@@ -23,6 +23,7 @@
     "ress": "^1.2.2",
     "sass-loader": "^7.1.0",
     "vue": "^2.5.2",
+    "vue-infinite-loading": "^2.4.3",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

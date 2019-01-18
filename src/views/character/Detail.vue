@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import worldList from '@/components/creator/worldList';
+import worldList from '@/components/world/worldList';
 import { findCharacter } from '../../../utils/apis/character';
 import { getWorldByCharacterId } from '../../../utils/apis/world';
 
