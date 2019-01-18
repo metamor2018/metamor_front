@@ -21,3 +21,8 @@ export function getStatusByWorldId(worldId, statusId = null) {
 export function postStatus(characterId, worldId, form) {
   return axios.post(`/character/${characterId}/world/${worldId}`, form);
 }
+
+
+export function getToLast(worldId, statusId) {
+  return axios.get(`/world/${worldId}/status/${statusId}`);
+}
