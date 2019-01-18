@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     onSubmit(characterId) {
-      const worldId = this.$route.params.id;
+      const worldId = this.$route.params.worldId;
       entryWorld(characterId, worldId)
         .then(() => { // エントリー成功時、プロフィールページに移動
           this.$router.push({ name: 'world-timeline', params: { characterId, worldId } });

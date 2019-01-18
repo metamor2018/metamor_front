@@ -93,12 +93,12 @@ export default new Router({
         },
         {
           // 詳細ページ
-          path: ':id',
+          path: ':worldId',
           name: 'world-detail',
           component: WorldDetail,
         },
         {
-          path: ':id/entry',
+          path: ':worldId/entry',
           name: 'character-select',
           component: CharacterSelect,
         },

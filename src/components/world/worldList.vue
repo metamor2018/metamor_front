@@ -7,7 +7,7 @@
       </div>
       <div class="body">
         <ul>
-          <router-link tag="li" class="world_area" v-for="world in worlds" :key="world.id" :to="{ name : 'world-detail', params : { id: world.id }}">
+          <router-link tag="li" class="world_area" v-for="world in worlds" :key="world.id" :to="{ name : 'world-detail', params : { worldId: world.id }}">
             <div class="left">
               <div class="name_area">
                 <label>ワールド名</label>

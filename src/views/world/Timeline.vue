@@ -34,6 +34,7 @@ export default {
     };
   },
   mounted() {
+    console.log(this.$route.params.worldId);
     setInterval(() => {
       if (this.statuses[0] !== undefined) {
         getToLast(this.$route.params.worldId, this.statuses[0].id)
