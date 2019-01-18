@@ -1,16 +1,31 @@
 <template>
   <div id="status-form">
+    <div class="dropdown">
+      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        選択キャラ
+      </a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="#">キャラ1</a>
+        <a class="dropdown-item" href="#">キャラ2</a>
+        <a class="dropdown-item" href="#">キャラ3</a>
+      </div>
+    </div>
     <b-form @submit="onSubmit">
-      <b-form-group id="exampleInputGroup1"
-                    label-for="exampleInput1">
-        <b-form-input id="exampleInput1"
-                      type="text"
-                      v-model="form.text"
-                      required
-                      placeholder="Enter text">
-        </b-form-input>
-      </b-form-group>
-      <b-button type="submit" variant="primary">Submit</b-button>
+      <div class="row">
+        <b-form-group id="exampleInputGroup1"
+                      label-for="exampleInput1"
+                      class="col-sm-9">
+          <b-form-input id="exampleInput1"
+                        type="text"
+                        v-model="form.text"
+                        required
+                        placeholder="Enter text">
+          </b-form-input>
+        </b-form-group>
+        <div class="form-group col-sm-3">
+          <b-button type="submit" variant="primary" class="sub-btn">Submit</b-button>
+        </div>
+      </div>
     </b-form>
   </div>
 </template>
@@ -46,3 +61,16 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.dropdown{
+  margin: 10px 0;
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+}
+.sub-btn{
+  width: 100%;
+}
+</style>
+
