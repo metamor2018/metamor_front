@@ -3,11 +3,11 @@ import axios from './axiosBase';
 /**
  * 投稿を取得
  * @param worldId
- * @param line
+ * @param statusId
  * @returns {AxiosPromise<any>}
  */
-export function getStatusByWorldId(worldId, line) {
-  return axios.get(`/world/${worldId}/status/${line}`);
+export function getStatusByWorldId(worldId, statusId = null) {
+  return axios.get(`/world/${worldId}/status`, { params: { statusId } });
 }
 
 
@@ -20,4 +20,9 @@ export function getStatusByWorldId(worldId, line) {
  */
 export function postStatus(characterId, worldId, form) {
   return axios.post(`/character/${characterId}/world/${worldId}`, form);
+}
+
+
+export function getToLast(worldId, statusId) {
+  return axios.get(`/world/${worldId}/status/${statusId}`);
 }

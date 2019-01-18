@@ -49,11 +49,7 @@ export default {
       const characterId = this.$route.params.characterId;
       const worldId = this.$route.params.worldId;
       postStatus(characterId, worldId, this.form)
-        .then((data) => {
-          this.$emit('input', { // 作成した投稿を親コンポーネントのstatusesに追加する
-            statuses: this.statuses.unshift(data.data),
-          });
-        })
+        .then() // 作成成功時
         .catch(() => {
           this.$router.push({ path: '/error' });
         });

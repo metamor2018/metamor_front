@@ -23,23 +23,43 @@
 <script>
 import InfiniteLoading from 'vue-infinite-loading';
 import StatusForm from '@/components/status/statusForm';
-import { getStatusByWorldId } from '../../../utils/apis/status';
+import { getStatusByWorldId, getToLast } from '../../../utils/apis/status';
 
 export default {
   components: { StatusForm, InfiniteLoading },
   data() {
     return {
-      statusLine: 1,
+      loaded: false,
       statuses: [],
     };
   },
-
+  mounted() {
+    setInterval(() => {
+      if (this.statuses[0] !== undefined) {
+        getToLast(this.$route.params.worldId, this.statuses[0].id)
+          .then((data) => {
+            if (data.data.length > 0) {
+              this.statuses.unshift(...data.data);
+            }
+          }).catch(() => {
+            // エラー
+          });
+      }
+    }, 2000);
+  },
   methods: {
     infiniteHandler($state) {
-      getStatusByWorldId(this.$route.params.worldId, this.statusLine)
+      const oldStatus = this.statuses[this.statuses.length - 1];
+      if (oldStatus !== undefined || this.loaded) { // 一回目は何故か失敗する可能性があるので回避
+        this.getStatus($state, oldStatus.id);
+      } else {
+        this.getStatus($state);
+      }
+    },
+    getStatus($state, id = null) { // idがnullなら最新20件を返す
+      getStatusByWorldId(this.$route.params.worldId, id)
         .then((data) => {
           if (data.data.length) {
-            this.statusLine += 1;
             this.statuses.push(...data.data);
             $state.loaded();
           } else {
