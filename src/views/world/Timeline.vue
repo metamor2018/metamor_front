@@ -1,19 +1,22 @@
 <template>
   <div>
-    <status-form :statuses="statuses"></status-form>
-    <ul id="example-2">
-      <li v-for="(status) in statuses" :key="status.id" >
-        -------------------------------------------------------------------------
-        <div class="media">
-          <div class="media-body">
-            {{ status.character.name }}
-            {{ status.createdAt }}
-            <h5 class="mt-0">{{ status.text }}</h5>
+    <div class="card">
+      <div class="card-header">
+        <status-form :statuses="statuses"></status-form>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li v-for="(status) in statuses" :key="status.id" class="list-group-item">
+          <div class="media">
+            <div class="media-body">
+              {{ status.character.name }}
+              {{ status.createdAt }}
+              <h5 class="mt-0">{{ status.text }}</h5>
+            </div>
           </div>
-        </div>
-      </li>
-      <infinite-loading @infinite="infiniteHandler"></infinite-loading>
-    </ul>
+        </li>
+        <infinite-loading @infinite="infiniteHandler"></infinite-loading>
+      </ul>
+    </div>
   </div>
 </template>
 
