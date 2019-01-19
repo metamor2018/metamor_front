@@ -6,7 +6,7 @@
           <div class="media-body">
             <h5 class="world_name">{{ world.name }}</h5>
             <p class="world_detail">{{ world.detail }}</p>
-            <router-link v-bind:to="{ name : 'world-detail', params : { id: world.id }}" class="btn_arrow"><img src="@/assets/right_arrow.png" alt="詳細"></router-link>
+            <router-link v-bind:to="{ name : 'world-detail', params : { worldId: world.id }}" class="btn_arrow"><img src="@/assets/right_arrow.png" alt="詳細"></router-link>
           </div>
         </div>
       </li>

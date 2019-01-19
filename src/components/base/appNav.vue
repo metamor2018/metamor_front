@@ -21,7 +21,7 @@
         <b-nav-item-dropdown text="創作者" right>
           <b-dropdown-item :to="{ name: 'create-profile', params: { id: creator.id }}">プロフィール</b-dropdown-item>
           <b-dropdown-divider></b-dropdown-divider>
-          <b-dropdown-item :to="{ name: 'create-world', params: { id: creator.id }}">ワールド</b-dropdown-item>
+          <b-dropdown-item :to="{ name: 'worlds'}">ワールド</b-dropdown-item>
           <b-dropdown-item href="#">キャラクター</b-dropdown-item>
           <b-dropdown-divider></b-dropdown-divider>
           <b-dropdown-item @click="handleLogout" style="color: red;">ログアウト</b-dropdown-item>
