@@ -1,14 +1,9 @@
 <template>
   <div id="status-form">
-    <div class="dropdown">
-      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        選択キャラ
-      </a>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <a class="dropdown-item" href="#">キャラ1</a>
-        <a class="dropdown-item" href="#">キャラ2</a>
-        <a class="dropdown-item" href="#">キャラ3</a>
-      </div>
+    <div>
+      <b-dropdown id="ddown-offset" offset="25" :text="this.ddText" class="m-2">
+        <b-dropdown-item href="#" v-for="character in characters" :key="character.id" v-on:click="selectCharacter(character)">{{ character.name }}</b-dropdown-item>
+      </b-dropdown>
     </div>
     <b-form @submit="onSubmit">
       <div class="row">
@@ -34,22 +29,33 @@
 import { postStatus } from '../../../utils/apis/status';
 
 export default {
-  props: ['statuses'],
+  props: ['statuses', 'characters'],
   data() {
     return {
+      ddText: 'キャラクターを選択',
       form: {
+        characterId: '',
         text: '',
         reply: false,
       },
     };
   },
   methods: {
+    selectCharacter(character) {
+      this.form.characterId = character.id;
+      this.ddText = character.name;
+    },
     onSubmit(evt) {
       evt.preventDefault();
-      const characterId = this.$route.params.characterId;
+      if (this.form.characterId.length < 1) {
+        alert('キャラクターを選択するか、参加してください');
+        return;
+      }
       const worldId = this.$route.params.worldId;
-      postStatus(characterId, worldId, this.form)
-        .then() // 作成成功時
+      postStatus(this.form.characterId, worldId, this.form)
+        .then(() => {
+          this.form.text = '';
+        }) // 作成成功時
         .catch(() => {
           this.$router.push({ path: '/error' });
         });

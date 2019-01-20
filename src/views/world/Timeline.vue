@@ -2,7 +2,7 @@
   <div>
     <div class="card">
       <div class="card-header">
-        <status-form :statuses="statuses"></status-form>
+        <status-form :statuses="statuses" :characters="entryCharacters" ></status-form>
       </div>
       <ul class="list-group list-group-flush">
         <li v-for="(status) in statuses" :key="status.id" class="list-group-item">
@@ -23,18 +23,28 @@
 <script>
 import InfiniteLoading from 'vue-infinite-loading';
 import StatusForm from '@/components/status/statusForm';
+import { getCreator } from '../../../utils/auth';
 import { getStatusByWorldId, getToLast } from '../../../utils/apis/status';
+import { getCharacterByWorldIdAndCreatorId } from '../../../utils/apis/character';
 
 export default {
   components: { StatusForm, InfiniteLoading },
   data() {
     return {
+      creator: '',
+      entryCharacters: [],
       loaded: false,
       statuses: [],
     };
   },
   mounted() {
-    console.log(this.$route.params.worldId);
+    this.creator = getCreator();
+    getCharacterByWorldIdAndCreatorId(this.$route.params.worldId, this.creator.id)
+      .then((data) => {
+        this.entryCharacters = data.data;
+      }).catch(() => {
+        console.log('error');
+      });
     setInterval(() => {
       if (this.statuses[0] !== undefined) {
         getToLast(this.$route.params.worldId, this.statuses[0].id)
