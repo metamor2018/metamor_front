@@ -1,9 +1,10 @@
 <template>
   <div id="status-form">
     <div>
-      <b-dropdown id="ddown-offset" offset="25" :text="this.ddText" class="m-2">
+      <b-dropdown id="ddown-offset" class="m-2" offset="25" :text="this.ddText" v-if="this.characters.length">
         <b-dropdown-item href="#" v-for="character in characters" :key="character.id" v-on:click="selectCharacter(character)">{{ character.name }}</b-dropdown-item>
       </b-dropdown>
+      <p class="text-muted" v-else>参加しているキャラクターがありません</p>
     </div>
     <b-form @submit="onSubmit">
       <div class="row">
@@ -18,7 +19,7 @@
           </b-form-input>
         </b-form-group>
         <div class="form-group col-sm-3">
-          <b-button type="submit" variant="primary" class="sub-btn">Submit</b-button>
+          <b-button type="submit" variant="primary" class="sub-btn">送信</b-button>
         </div>
       </div>
     </b-form>
