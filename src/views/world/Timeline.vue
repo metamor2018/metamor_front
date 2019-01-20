@@ -23,7 +23,7 @@
 <script>
 import InfiniteLoading from 'vue-infinite-loading';
 import StatusForm from '@/components/status/statusForm';
-import { getStatusByWorldId } from '../../../utils/apis/status';
+import { getStatusByWorldId, getToLast } from '../../../utils/apis/status';
 
 export default {
   components: { StatusForm, InfiniteLoading },
@@ -33,7 +33,20 @@ export default {
       statuses: [],
     };
   },
-
+  mounted() {
+    setInterval(() => {
+      if (this.statuses[0] !== undefined) {
+        getToLast(this.$route.params.worldId, this.statuses[0].id)
+          .then((data) => {
+            if (data.data.length > 0) {
+              this.statuses.unshift(...data.data);
+            }
+          }).catch(() => {
+            // エラー
+          });
+      }
+    }, 2000);
+  },
   methods: {
     infiniteHandler($state) {
       const oldStatus = this.statuses[this.statuses.length - 1];
