@@ -10,6 +10,7 @@ import World from '@/views/World';
 import Worlds from '@/views/world/Worlds';
 import WorldDetail from '@/views/world/Detail';
 import WorldTimeline from '@/views/world/Timeline';
+import WorldCreate from '@/views/world/Create';
 import Character from '@/views/Character';
 import CharacterSelect from '@/views/world/CharacterSelect';
 import CharacterCreate from '@/views/character/Create';
@@ -101,6 +102,11 @@ export default new Router({
           path: ':worldId/entry',
           name: 'character-select',
           component: CharacterSelect,
+        },
+        {
+          path: 'create',
+          name: 'world-create',
+          component: WorldCreate,
         },
       ],
     },
