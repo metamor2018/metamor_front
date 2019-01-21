@@ -10,7 +10,7 @@
             <div class="media-body">
               <span>{{ status.character.name }}</span>
               <span class="text-muted">@{{ status.character.id }}</span>
-              <span class="text-muted">{{ status.createdAt }}</span>
+              <span class="text-muted">{{ status.createdAt | moment }}</span>
               <h5 class="mt-0">{{ status.text }}</h5>
             </div>
           </div>
