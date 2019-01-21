@@ -43,10 +43,8 @@ export default {
     getCharacterByWorldIdAndCreatorId(this.$route.params.worldId, this.creator.id)
       .then((data) => {
         this.entryCharacters = data.data;
-      }).catch(() => {
-        console.log('error');
-      });
-    setInterval(() => {
+      }).catch(() => {});
+    this.creator = setInterval(() => {
       if (this.statuses[0] !== undefined) {
         getToLast(this.$route.params.worldId, this.statuses[0].id)
           .then((data) => {
@@ -54,8 +52,10 @@ export default {
               this.statuses.unshift(...data.data);
             }
           }).catch(() => {
-            // エラー
+            clearInterval(this.creator);
           });
+      } else {
+        this.getStatusByAjax();
       }
     }, 2000);
   },
@@ -80,6 +80,16 @@ export default {
         }).catch(() => {
           $state.complete();
           alert('問題が発生しました');
+        });
+    },
+    getStatusByAjax() {
+      getStatusByWorldId(this.$route.params.worldId)
+        .then((data) => {
+          if (data.data.length) {
+            this.statuses.push(...data.data);
+          }
+        }).catch(() => {
+          clearInterval(this.creator);
         });
     },
   },

@@ -1,17 +1,16 @@
 <template>
   <div>
-    <ul id="example-2">
-      <li v-for="(character, index) in characters" :key="index" >
-        <div class="media">
-          <div class="media-body">
-            <h6 class="mt-0">@{{ character.id }}</h6>
-            <h5 class="mt-0">{{ character.name }}</h5>
-            {{ character.profile }}
+    <div class="d-flex justify-content-center">
+      <div class="p-2">
+        <div class="card" v-for="(character, index) in characters" :key="index">
+          <div class="card-body">
+            <h6 class="card-title">{{ character.name }} @{{ character.id }}</h6>
+            <p class="card-text">{{ character.profile }}</p>
             <button type="button" class="btn btn-primary" v-on:click="onSubmit(character.id)">参加</button>
           </div>
         </div>
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
 </template>
 
