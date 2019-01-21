@@ -19,9 +19,9 @@
                 <p class="name">{{ world.name }}</p>
               </div>
               <div class="time_area">
-                <label>開催期間</label>
+                <label></label>
                 <p class="for_time" v-if="world.endedAt !== null || world.startedAt !== null">
-                  {{ world.startedAt }} ~ {{ world.endedAt }}
+                  <!--{{ world.startedAt }} ~ {{ world.endedAt }}-->
                 </p>
               </div>
               <div class="detail_area">
