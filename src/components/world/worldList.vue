@@ -7,6 +7,11 @@
       </div>
       <div class="body">
         <ul>
+          <router-link tag="li" class="world_area" :to="{ name: 'world-create'}">
+            <div class="left">
+              <h5>作成する</h5>
+            </div>
+          </router-link>
           <router-link tag="li" class="world_area" v-for="world in worlds" :key="world.id" :to="{ name : 'world-detail', params : { worldId: world.id }}">
             <div class="left">
               <div class="name_area">

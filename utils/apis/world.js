@@ -1,5 +1,8 @@
 import axios from './axiosBase';
 
+export function createWorld(form) {
+  return axios.post('world', form);
+}
 
 export function getWorld() {
   return axios.get('/world');
