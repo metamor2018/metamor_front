@@ -19,3 +19,7 @@ export function createCharacter(form) {
 export function findCharacter(characterId) {
   return axios.get(`/character/${characterId}`);
 }
+
+export function getCharacterByWorldIdAndCreatorId(worldId, creatorId) {
+  return axios.get(`/world/${worldId}/creator/${creatorId}`);
+}
