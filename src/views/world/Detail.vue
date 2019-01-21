@@ -22,7 +22,7 @@
               ワールド参加
             </div>
             <div class="card-body">
-              <router-link v-bind:to="{ name : 'character-select', params : { id: world.id }}" class="btn btn-primary">既存のキャラクターで参加</router-link>
+              <router-link v-bind:to="{ name : 'character-select', params : { worldId: world.id }}" class="btn btn-primary">既存のキャラクターで参加</router-link>
               <button type="button" class="btn btn-primary">新しいキャラクターで参加</button>
             </div>
           </div>
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import TimeLine from "./TimeLine.vue"
+import TimeLine from './Timeline';
 import { findWorld } from '../../../utils/apis/world';
 
 export default {
@@ -44,7 +44,8 @@ export default {
     };
   },
   mounted() {
-    findWorld(this.$route.params.id)
+    console.log(this.$route.params);
+    findWorld(this.$route.params.worldId)
       .then((data) => {
         this.world = data.data;
       })

@@ -34,15 +34,15 @@ export default {
         this.characters = data.data;
       })
       .catch(() => {
-        // this.$router.push({ path: '/error' });
+        alert('問題が発生しました。もう一度お試しください');
       });
   },
   methods: {
     onSubmit(characterId) {
-      const worldId = this.$route.params.id;
+      const worldId = this.$route.params.worldId;
       entryWorld(characterId, worldId)
-        .then(() => { // エントリー成功時、プロフィールページに移動
-          this.$router.push({ name: 'world-timeline', params: { characterId, worldId } });
+        .then(() => { // エントリー成功時、ワールド詳細に移動
+          this.$router.push({ name: 'world-detail', params: { worldId } });
         })
         .catch((e) => {
           const statusCode = e.response.status;
