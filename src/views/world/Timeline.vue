@@ -8,8 +8,9 @@
         <li v-for="(status) in statuses" :key="status.id" class="list-group-item">
           <div class="media">
             <div class="media-body">
-              {{ status.character.name }}
-              {{ status.createdAt }}
+              <span>{{ status.character.name }}</span>
+              <span class="text-muted">@{{ status.character.id }}</span>
+              <span class="text-muted">{{ status.createdAt }}</span>
               <h5 class="mt-0">{{ status.text }}</h5>
             </div>
           </div>
