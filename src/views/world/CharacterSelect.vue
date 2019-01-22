@@ -2,7 +2,7 @@
   <div>
     <div class="d-flex justify-content-center">
       <div class="p-2">
-        <div class="card" v-for="(character, index) in characters" :key="index">
+        <div class="card character-card" v-for="(character, index) in characters" :key="index">
           <div class="card-body">
             <h6 class="card-title">{{ character.name }} @{{ character.id }}</h6>
             <p class="card-text">{{ character.profile }}</p>
@@ -16,7 +16,7 @@
 
 <script>
 import { getCreator } from '../../../utils/auth';
-import { getCharacterByCreatorId } from '../../../utils/apis/character';
+import { getNonEntryCharacter } from '../../../utils/apis/character';
 import { entryWorld } from '../../../utils/apis/world';
 
 export default {
@@ -28,7 +28,7 @@ export default {
   },
   mounted() {
     this.creator = getCreator();
-    getCharacterByCreatorId(this.creator.id, 1)
+    getNonEntryCharacter(this.$route.params.worldId, this.creator.id, 1)
       .then((data) => {
         this.characters = data.data;
       })
@@ -55,3 +55,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.character-card {
+  margin: 30px 0;
+}
+</style>
