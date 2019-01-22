@@ -23,3 +23,7 @@ export function findCharacter(characterId) {
 export function getCharacterByWorldIdAndCreatorId(worldId, creatorId) {
   return axios.get(`/world/${worldId}/creator/${creatorId}`);
 }
+
+export function getNonEntryCharacter(worldId, creatorId) {
+  return axios.get(`/world/${worldId}/creator/${creatorId}/nonEntry`);
+}
